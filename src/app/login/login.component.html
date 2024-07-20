@@ -1,0 +1,41 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <p>
+        <img class="logo" src="../../assets/images/logoIcon.png" alt="Logo Image1">
+      </p>
+    </mat-card-header>
+    <div class="logoheading">
+      OIMS PRO
+    </div>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width form-field">
+                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td><mat-form-field class="example-full-width form-field">
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              </mat-form-field></td>
+          </tr>
+        </table>
+      </form>
+      <div class="invalidCred" [ngStyle]="{ 'display': validationError ? 'block' : 'none' }">Invalid Credentials !!
+      </div>
+
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="form-button" mat-raised-button (click)="onlogin()" color="primary">SignIn</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

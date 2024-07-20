@@ -1,0 +1,26 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  text-align: center;
+}
+
+.admin{
+  border-radius: 25px !important;
+    width: 550px;
+}
+
+.flex-item-left1{
+  margin-right: 10px;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.flex-item-left2{
+  margin-top: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+
+}
+
+

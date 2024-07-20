@@ -1,0 +1,58 @@
+.example-card {
+  padding: 50px;
+  margin: 80px;
+  width: 450px;
+  height: 650px;
+  margin-left: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.form-field{
+  height: 70px;
+  width: 350px;
+}
+
+.form-button{
+  height: 50px;
+  width: 350px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.mat-button{
+margin-right: 60px;
+}
+
+.h3-heading{
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+.logo{
+  height: 140px;
+  width: 140px;
+  align-items: center;
+}
+
+.invalidCred{
+  color: #860808;
+  text-align: center;
+}
+
+button:hover {
+  /*background-color: #5f6bb9;*/
+  background-color: #b07dcb;
+}
+
+.logoheading {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  color: #3c3c3c;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}

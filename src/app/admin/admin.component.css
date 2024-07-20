@@ -1,0 +1,54 @@
+.nav-item{
+  margin: 20px;
+}
+
+
+.navColor .active{
+  background-color: rgb(148, 148, 148);
+}
+
+
+:host ::ng-deep .p-menuitem-icon {
+  font-size: 12px;
+  color:black;
+}
+
+.card-items{
+  color: rgb(73, 73, 73);
+}
+
+:host ::ng-deep .p-menuitem-text{
+  color:rgb(73, 73, 73);
+}
+
+:host ::ng-deep .p-menuitem-link{
+  color: rgb(44, 44, 44);
+}
+
+:host ::ng-deep .p-tabmenu{
+  border: none;
+  border-style: none;
+  border-radius: 0%;
+  fill: none;
+}
+
+:host ::ng-deep .activeItem{
+  color: rgb(44, 44, 44);
+}
+
+:host ::ng-deep .activeItemChange{
+  color: rgb(44, 44, 44);
+}
+
+:host ::ng-deep .p-button{
+  align-self: flex-end;
+}
+
+.card-items{
+  margin-bottom: 10px;
+  box-shadow: 10px;
+}
+
+.p-tabmenu .p-tabmenu-nav{
+  background: rgb(165, 174, 182);
+}
