@@ -1,0 +1,163 @@
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button pRipple severity="success" label="New" icon="pi pi-plus" class="mr-2" (click)="openNew()" />
+      <p-button pRipple severity="danger" label="Delete" icon="pi pi-trash" (click)="deleteSelectedMachines()"
+        [disabled]="!selectedMachines || !selectedMachines.length" />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table #dt class="usertable" [value]="machines" [rows]="10" [paginator]="true" [scrollable]="true"
+    scrollHeight="400px" [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+    [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedMachines" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0">Manage Machines</h5>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pSortableColumn="name" style="min-width:10rem">
+          Machine ID <p-sortIcon field="name" />
+        </th>
+        <th>
+          Machine Code
+        </th>
+        <th>
+          Machine Name
+        </th>
+        <th>
+          Machine Operator
+        </th>
+        <th>
+          Machine Type
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Part
+        </th>
+        <th>
+          Raw Material
+        </th>
+        <th>
+          Node MCU
+        </th>
+        <th style="min-width:10rem">Action</th>
+      </tr>
+    </ng-template>
+    <!-- table values -->
+    <ng-template pTemplate="body" let-machine>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="machine" />
+        </td>
+        <td>
+          {{ machine.id }}
+        </td>
+        <td>
+          {{ machine.code }}
+        </td>
+        <td>
+          {{ machine.name }}
+        </td>
+        <td>
+          {{ machine.machineOperator }}
+        </td>
+        <td>
+          {{ machine.type }}
+        </td>
+        <td>
+          {{ machine.status }}
+        </td>
+        <td>
+          {{ machine.part }}
+        </td>
+        <td>
+          {{ machine.rawMaterial }}
+        </td>
+        <td>
+          {{ machine.nodeMCU }}
+        </td>
+        <td>
+          <p-button pRipple icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" severity="success"
+            (click)="editMachine(machine)" />
+          <p-button pRipple icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
+            (click)="deleteMachine(machine.id)" />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ machines ? machines.length : 0 }} products.
+      </div>
+    </ng-template>
+  </p-table>
+
+  <!-- Creating New Record -->
+  <form #machineForm="ngForm" (ngSubmit)="saveMachine(machineForm)">
+    <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true"
+      styleClass="p-fluid">
+      <ng-template pTemplate="content">
+
+        <div class="field">
+          <label for="name">Machine Code</label>
+          <input type="text" pInputText id="code" name="code" [(ngModel)]="machine.code" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Machine Name</label>
+          <input type="text" pInputText id="name" name="name" [(ngModel)]="machine.name" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Machine Operator</label>
+          <input type="text" pInputText id="machineOperator" name="machineOperator"
+            [(ngModel)]="machine.machineOperator" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Machine Type</label>
+          <input type="text" pInputText id="type" name="type" [(ngModel)]="machine.type" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Status</label>
+          <input type="text" pInputText id="status" name="status" [(ngModel)]="machine.status" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Part</label>
+          <input type="text" pInputText id="part" name="part" [(ngModel)]="machine.part" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Raw Material</label>
+          <input type="text" pInputText id="rawMaterial" name="rawMaterial" [(ngModel)]="machine.rawMaterial" required
+            autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">Node MCU</label>
+          <input type="text" pInputText id="nodeMCU" name="nodeMCU" [(ngModel)]="machine.nodeMCU" required autofocus />
+        </div>
+
+
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+        <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
+        <p-button pRipple label="Save" icon="pi pi-check" [text]="true" type="submit" />
+      </ng-template>
+    </p-dialog>
+  </form>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>

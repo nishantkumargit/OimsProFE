@@ -1,0 +1,27 @@
+.dropdown-menu{
+  color: rgb(15, 16, 16);
+}
+
+.dropdown-item{
+  color: rgb(8, 8, 8);
+}
+
+.bg-custom-1 {
+  background-color: #85144b;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+.left-side{
+  margin-right: 150px;
+}
+
+.logoheading {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #3c3c3c;
+  margin-left: 10px;
+}

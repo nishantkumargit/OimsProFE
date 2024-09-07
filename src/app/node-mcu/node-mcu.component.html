@@ -1,0 +1,146 @@
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button pRipple severity="success" label="New" icon="pi pi-plus" class="mr-2" (click)="openNew()" />
+      <p-button pRipple severity="danger" label="Delete" icon="pi pi-trash" (click)="deleteSelectedNodeMcus()"
+        [disabled]="!selectedNodeMcu || !selectedNodeMcu.length" />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table #dt class="usertable" [value]="nodeMcus" [rows]="10" [paginator]="true" [scrollable]="true"
+    scrollHeight="400px" [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+    [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedNodeMcu" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0">Manage Node MCU</h5>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pSortableColumn="name" style="min-width:10rem">
+          NodeMCU ID <p-sortIcon field="name" />
+        </th>
+        <th>
+          Device ID
+        </th>
+        <th>
+          NodeMCU Name
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Installation Date
+        </th>
+        <th>
+          Recieved Time
+        </th>
+
+        <th style="min-width:10rem">Action</th>
+      </tr>
+    </ng-template>
+    <!-- table values -->
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="nodeMcu" />
+        </td>
+        <td>
+          {{ nodeMcu.id }}
+        </td>
+        <td>
+          {{ nodeMcu.deviceId }}
+        </td>
+        <td>
+          {{ nodeMcu.name }}
+        </td>
+        <td>
+          {{ nodeMcu.status }}
+        </td>
+        <td>
+          {{ nodeMcu.installationDate }}
+        </td>
+        <td>
+          {{ nodeMcu.recievedTime }}
+        </td>
+
+        <td>
+          <p-button pRipple icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" severity="success"
+            (click)="editMcu(nodeMcu)" />
+          <p-button pRipple icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
+            (click)="deleteNodeMcu(nodeMcu.id)" />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ nodeMcus ? nodeMcus.length : 0 }} products.
+      </div>
+    </ng-template>
+  </p-table>
+
+  <!-- Creating New Record -->
+  <form #nodeMcuForm="ngForm" (ngSubmit)="saveNodeMcu(nodeMcuForm)">
+    <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Node MCU Details" [modal]="true"
+      styleClass="p-fluid">
+      <ng-template pTemplate="content">
+
+        <div class="field">
+          <label for="name">Device ID</label>
+          <input type="text" pInputText id="lname" name="lastName" [(ngModel)]="nodeMcu.deviceId" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="name">NodeMCU Name</label>
+          <input type="text" pInputText id="email" name="emailId" [(ngModel)]="nodeMcu.name" required autofocus />
+        </div>
+
+        <div class="card flex flex-wrap gap-3 p-fluid">
+          <div class="flex-auto">
+            <label for="icondisplay" class="font-bold block mb-2"> Installation Date </label>
+            <p-calendar [(ngModel)]="nodeMcu.installationDate" [iconDisplay]="'input'" [showIcon]="true"
+              inputId="icondisplay" />
+          </div>
+
+          <div class="flex-auto">
+            <label for="templatedisplay" class="font-bold block mb-2"> Recieved Date </label>
+            <p-calendar [(ngModel)]="nodeMcu.recievedTime" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true"
+              inputId="templatedisplay">
+              <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                <i class="pi pi-clock pointer-events-none pointer-events-none" (click)="clickCallBack($event)"></i>
+              </ng-template>
+            </p-calendar>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="mb-3">Status</label>
+          <div class="formgrid grid">
+            <div class="field-radiobutton col-6">
+              <p-radioButton id="role1" name="role" value="ROLE_ACTIVE" name="status" [(ngModel)]="nodeMcu.status" />
+              <label for="role1">ROLE_ACTIVE</label>
+            </div>
+            <div class="field-radiobutton col-6">
+              <p-radioButton id="role2" name="role" value="ROLE_INACTIVE" name="status" [(ngModel)]="nodeMcu.status" />
+              <label for="role2">ROLE_INACTIVE</label>
+            </div>
+          </div>
+        </div>
+
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+        <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()" />
+        <p-button pRipple label="Save" icon="pi pi-check" [text]="true" type="submit" />
+      </ng-template>
+    </p-dialog>
+  </form>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>

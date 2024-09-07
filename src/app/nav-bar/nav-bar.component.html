@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-sm shadow p-3 mb-3 bg-white rounded" style="background-color: #e8e8e8;">
+  <a class=" navbar-brand" href="#">
+    <img src="../../assets/images/logoIcon96.png" width="40" height="40" alt="logo">
+    <b class="logoheading">OIMS PRO</b>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse profile justify-content-end left-side" id="navbar-list-4">
+    <div class="btn-group">
+      <!-- <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+        <img src="../../assets/images/user_profile.png" width="40" height="40" class="rounded-circle">
+      </a> -->
+      <p-avatar icon="pi pi-user" styleClass="mr-2" size="large" shape="circle" />
+      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+        aria-expanded="false" data-bs-reference="parent">
+        <span class="visually-hidden">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="logout()">LogOut</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

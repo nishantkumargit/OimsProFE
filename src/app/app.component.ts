@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router } from 'express';
+import { UserService } from './services/user.service';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'login';
+
+  constructor(private primengConfig: PrimeNGConfig) {}
+
+/*
+  constructor(private router: Router, private service: UserService, private http: HttpClient, private authService: AuthService) {
+    localStorage.setItem("token", "");
+  } */
+
 }
