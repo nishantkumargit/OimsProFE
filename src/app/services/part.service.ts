@@ -11,7 +11,7 @@ export class PartService {
   apiUrlPart: string;
 
   constructor(private http: HttpClient) {
-    this.apiUrlPart = 'http://localhost:8080/part';
+    this.apiUrlPart = '/api/part';
   }
 
     postData(data: Part): Observable<any> {
