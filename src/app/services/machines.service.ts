@@ -11,9 +11,8 @@ export class MachinesService {
   apiUrlMachine: string;
 
   constructor(private http: HttpClient) {
-    this.apiUrlMachine = 'http://localhost:8080/machine';
+    this.apiUrlMachine = '/api/machine';
   }
-
 
   postData(data: Machines): Observable<any> {
     return this.http.post<any>(this.apiUrlMachine, data);

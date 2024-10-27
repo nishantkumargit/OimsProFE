@@ -11,7 +11,7 @@ export class NodeMCUService {
   apiUrlNodeMcu: string;
 
   constructor(private http: HttpClient) {
-    this.apiUrlNodeMcu = 'http://localhost:8080/part';
+    this.apiUrlNodeMcu = '/api/part';
   }
 
     postData(data: NodeMCU): Observable<any> {

@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.apiUrl = '/api/signin';
-    this.apiUrlUser = 'http://localhost:8080/user';
+    this.apiUrlUser = '/api/user';
   }
 
  public authenticate(data: any): Observable<any> {
